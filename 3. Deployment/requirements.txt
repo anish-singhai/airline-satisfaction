@@ -9,3 +9,5 @@ numpy==2.0.2
 plotly==5.24.1
 pydantic==2.10.4
 requests==2.32.3
+shap==0.53.0
+groq==1.7.0

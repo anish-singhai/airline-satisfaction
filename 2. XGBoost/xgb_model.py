@@ -33,6 +33,7 @@ from sklearn.metrics import (
     confusion_matrix, classification_report, RocCurveDisplay,
 )
 from xgboost import XGBClassifier
+import shap
 
 RANDOM_STATE = 42
 TRAIN_PATH = "../Data/train.csv"
@@ -220,22 +221,54 @@ plt.savefig(f"{OUT_DIR}/roc_curve.png", dpi=150)
 plt.close()
 
 # ----------------------------------------------------------------------
-# 5. Feature importances
+# 5. Feature importances (SHAP) -- mean |SHAP value| over a sample of the
+#    training data. More rigorous than XGBoost's built-in gain-based
+#    importances, and the same TreeExplainer is reused at inference time
+#    for per-prediction explanations (see 3. Deployment/app.py).
 # ----------------------------------------------------------------------
 feature_names = final_pipe.named_steps["prep"].get_feature_names_out()
-importances = final_pipe.named_steps["clf"].feature_importances_
-fi = pd.Series(importances, index=feature_names).sort_values(ascending=False)
 
-print("\nTop 20 feature importances:")
-print(fi.head(20))
+SHAP_SAMPLE_SIZE = 2000
+X_shap_sample = X_train.sample(n=min(SHAP_SAMPLE_SIZE, len(X_train)), random_state=RANDOM_STATE)
+X_shap_sample_transformed = final_pipe.named_steps["prep"].transform(X_shap_sample)
+explainer = shap.TreeExplainer(final_pipe.named_steps["clf"])
+shap_values_sample = explainer.shap_values(X_shap_sample_transformed)
+mean_abs_shap = np.abs(shap_values_sample).mean(axis=0)
+shap_importance = pd.Series(mean_abs_shap, index=feature_names).sort_values(ascending=False)
+
+print("\nTop 20 feature importances (mean |SHAP value|):")
+print(shap_importance.head(20))
 
 plt.figure(figsize=(8, 8))
-sns.barplot(x=fi.head(20).values, y=fi.head(20).index, color="#DD8452")
-plt.title("Top 20 Feature Importances (XGBoost)")
-plt.xlabel("Importance")
+sns.barplot(x=shap_importance.head(20).values, y=shap_importance.head(20).index, color="#DD8452")
+plt.title("Top 20 Feature Importances (mean |SHAP value|)")
+plt.xlabel("Mean |SHAP value|")
 plt.tight_layout()
 plt.savefig(f"{OUT_DIR}/feature_importances.png", dpi=150)
 plt.close()
+
+# Export metrics + feature lists for the deployed app's "Model Info" tab
+eval_metrics = {
+    "validation_metrics": {
+        "accuracy": float(accuracy_score(y_val, val_pred)),
+        "precision": float(precision_score(y_val, val_pred)),
+        "recall": float(recall_score(y_val, val_pred)),
+        "f1": float(f1_score(y_val, val_pred)),
+        "roc_auc": float(roc_auc_score(y_val, val_proba)),
+    },
+    "best_hyperparameters": best_params,
+    "top_shap_importances": [
+        {"feature": name, "mean_abs_shap": float(score)}
+        for name, score in shap_importance.head(20).items()
+    ],
+    "raw_input_features": sorted(
+        set(train_raw.columns) - {TARGET, "id"}
+    ),
+    "engineered_features": numeric_cols + categorical_cols,
+}
+with open(f"{OUT_DIR}/eval_metrics.json", "w") as f:
+    json.dump(eval_metrics, f, indent=2)
+print(f"Eval metrics + feature lists saved to {OUT_DIR}/eval_metrics.json")
 
 # ----------------------------------------------------------------------
 # 5.5 Export serving artifacts for deployment/monitoring

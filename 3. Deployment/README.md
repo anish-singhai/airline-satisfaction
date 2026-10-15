@@ -12,26 +12,40 @@ deployment) to simulate live production traffic with delayed ground-truth feedba
 ## Endpoints
 
 - `GET /health` — liveness check
+- `GET /` — redirects to `/demo`
 - `POST /predict` — score a passenger (raw Kaggle feature columns as JSON body), returns
-  `{request_id, satisfaction_probability, prediction}`
+  `{request_id, satisfaction_probability, prediction, shap_contributions}` — the SHAP values show
+  which features pushed this specific prediction toward/away from "satisfied"
 - `POST /feedback` — attach a true label to a previous prediction:
   `{"request_id": "...", "true_label": 0 or 1}`
+- `/demo` — Gradio UI: model info (validation metrics, SHAP-based global feature importances,
+  raw/engineered feature lists) and an interactive predictor showing the prediction, its SHAP
+  explanation, and an LLM-generated plain-English summary
 - `/dashboard` — Gradio UI: requests/min, latency percentiles, error rate, rolling
   accuracy/ROC-AUC (as feedback arrives), and feature drift (PSI for continuous numeric features,
   L1/total-variation distance for categorical and discrete numeric features) vs. the training
-  distribution.
+  distribution. Manual predictions from `/demo` are logged separately (`source='manual'`) and
+  excluded from every metric here.
+
+## Environment variables
+
+- `GROQ_API_KEY` (optional) — enables the LLM-generated summary on `/demo`'s predictor tab, via
+  [Groq's](https://console.groq.com) free tier (no credit card). Without it, the summary falls
+  back to a templated sentence built from the prediction + top SHAP factors — the app works fine
+  either way.
 
 ## Running locally
 
 ```
 pip install -r requirements.txt
+export GROQ_API_KEY=your_key_here  # optional
 uvicorn app:app --host 127.0.0.1 --port 7860
 ```
 
 Or via Docker:
 ```
 docker build -t airline-satisfaction .
-docker run -p 7860:7860 airline-satisfaction
+docker run -p 7860:7860 -e GROQ_API_KEY=your_key_here airline-satisfaction
 ```
 
 ## Known limitation

@@ -1,0 +1,161 @@
+{
+  "validation_metrics": {
+    "accuracy": 0.9245606637746825,
+    "precision": 0.9264097215323996,
+    "recall": 0.9015434684539537,
+    "f1": 0.9138074630521761,
+    "roc_auc": 0.9574586047966075
+  },
+  "best_hyperparameters": {
+    "subsample": 1.0,
+    "reg_lambda": 2,
+    "reg_alpha": 0.01,
+    "n_estimators": 500,
+    "min_child_weight": 1,
+    "max_depth": 6,
+    "learning_rate": 0.1,
+    "gamma": 0.3,
+    "colsample_bytree": 0.7
+  },
+  "top_shap_importances": [
+    {
+      "feature": "num__Online boarding",
+      "mean_abs_shap": 0.726235032081604
+    },
+    {
+      "feature": "num__Inflight wifi service",
+      "mean_abs_shap": 0.5730155110359192
+    },
+    {
+      "feature": "cat__Type of Travel_Business travel",
+      "mean_abs_shap": 0.5376976132392883
+    },
+    {
+      "feature": "cat__Class_Business",
+      "mean_abs_shap": 0.4462551474571228
+    },
+    {
+      "feature": "cat__Customer Type_Loyal Customer",
+      "mean_abs_shap": 0.3895846903324127
+    },
+    {
+      "feature": "num__Baggage handling",
+      "mean_abs_shap": 0.19806897640228271
+    },
+    {
+      "feature": "num__Checkin service",
+      "mean_abs_shap": 0.1509036421775818
+    },
+    {
+      "feature": "num__Seat comfort",
+      "mean_abs_shap": 0.14460264146327972
+    },
+    {
+      "feature": "cat__Type of Travel_Personal Travel",
+      "mean_abs_shap": 0.12775512039661407
+    },
+    {
+      "feature": "num__On-board service",
+      "mean_abs_shap": 0.12580713629722595
+    },
+    {
+      "feature": "num__Inflight entertainment",
+      "mean_abs_shap": 0.11164191365242004
+    },
+    {
+      "feature": "num__Flight Distance",
+      "mean_abs_shap": 0.10667605698108673
+    },
+    {
+      "feature": "num__Cleanliness",
+      "mean_abs_shap": 0.10501212626695633
+    },
+    {
+      "feature": "num__Age",
+      "mean_abs_shap": 0.09915873408317566
+    },
+    {
+      "feature": "cat__Customer Type_disloyal Customer",
+      "mean_abs_shap": 0.08902300149202347
+    },
+    {
+      "feature": "num__was_rated_Inflight wifi service",
+      "mean_abs_shap": 0.08658663928508759
+    },
+    {
+      "feature": "num__Ease of Online booking",
+      "mean_abs_shap": 0.08597888052463531
+    },
+    {
+      "feature": "num__Leg room service",
+      "mean_abs_shap": 0.08516372740268707
+    },
+    {
+      "feature": "cat__Class_Eco",
+      "mean_abs_shap": 0.06208236142992973
+    },
+    {
+      "feature": "num__Gate location",
+      "mean_abs_shap": 0.05767890810966492
+    }
+  ],
+  "raw_input_features": [
+    "Age",
+    "Arrival Delay in Minutes",
+    "Baggage handling",
+    "Checkin service",
+    "Class",
+    "Cleanliness",
+    "Customer Type",
+    "Departure Delay in Minutes",
+    "Departure/Arrival time convenient",
+    "Ease of Online booking",
+    "Flight Distance",
+    "Food and drink",
+    "Gate location",
+    "Gender",
+    "Inflight entertainment",
+    "Inflight wifi service",
+    "Leg room service",
+    "On-board service",
+    "Online boarding",
+    "Seat comfort",
+    "Type of Travel"
+  ],
+  "engineered_features": [
+    "Age",
+    "Flight Distance",
+    "Inflight wifi service",
+    "Departure/Arrival time convenient",
+    "Ease of Online booking",
+    "Gate location",
+    "Food and drink",
+    "Online boarding",
+    "Seat comfort",
+    "Inflight entertainment",
+    "On-board service",
+    "Leg room service",
+    "Baggage handling",
+    "Checkin service",
+    "Cleanliness",
+    "Departure Delay in Minutes",
+    "Arrival Delay in Minutes",
+    "was_rated_Inflight wifi service",
+    "was_rated_Departure/Arrival time convenient",
+    "was_rated_Ease of Online booking",
+    "was_rated_Gate location",
+    "was_rated_Food and drink",
+    "was_rated_Online boarding",
+    "was_rated_Seat comfort",
+    "was_rated_Inflight entertainment",
+    "was_rated_On-board service",
+    "was_rated_Leg room service",
+    "was_rated_Checkin service",
+    "was_rated_Cleanliness",
+    "Total Delay in Minutes",
+    "Gender",
+    "Customer Type",
+    "Type of Travel",
+    "Class"
+  ]
+}

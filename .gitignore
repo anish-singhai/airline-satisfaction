@@ -1,4 +1,30 @@
+# Raw data (download from Kaggle, see README) and local envs
+Data/
+.venv/
+.venv-test/
+.venv-verify/
+
+# IDE / OS / tooling
+.vscode/
+.claude/
+.DS_Store
 __pycache__/
 *.pyc
-logs.db
-server.log
+
+# Large / derived artifacts not needed in the repo
+1. RF/model_outputs/random_forest_pipeline.joblib
+1. RF/model_outputs/submission.csv
+2. XGBoost/model_outputs/submission.csv
+2. XGBoost/model_outputs/simulation_holdout.csv
+submissions/
+1. RF/rf_run.log
+2. XGBoost/xgb_run.log
+
+# Deployment app's local runtime artifacts
+3. Deployment/logs.db
+3. Deployment/server.log
+3. Deployment/__pycache__/
+
+# EDA script kept local only -- findings narrated in the top-level README instead
+/eda.py
+2. XGBoost/model_outputs/README.md

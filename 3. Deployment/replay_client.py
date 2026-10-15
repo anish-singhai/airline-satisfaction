@@ -1,10 +1,10 @@
 """
 Replay the held-out 20% (model never trained on it) against the deployed API as if it were
 live production traffic, with ground-truth feedback arriving after a delay. Run this locally --
-it is the "client" generating the traffic the dashboard tracks, not part of the Space itself.
+it is the "client" generating the traffic the dashboard tracks, not part of the deployed app itself.
 
 Example:
-    python3 replay_client.py --base-url https://anishsinghai-airline-satisfaction-monitor.hf.space \
+    python3 replay_client.py --base-url https://airline-satisfaction-monitor.onrender.com \
         --num-batches 15 --batch-size 20 --row-sleep 0.1 --feedback-delay 8 \
         --inject-drift-after-batch 10
 """
@@ -46,7 +46,7 @@ def row_to_payload(row, inject_drift=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-url", required=True,
-                         help="Deployed Space URL, e.g. https://anishsinghai-airline-satisfaction-monitor.hf.space")
+                         help="Deployed app URL, e.g. https://airline-satisfaction-monitor.onrender.com")
     parser.add_argument("--holdout-csv", default="../2. XGBoost/model_outputs/simulation_holdout.csv")
     parser.add_argument("--batch-size", type=int, default=20)
     parser.add_argument("--num-batches", type=int, default=20)

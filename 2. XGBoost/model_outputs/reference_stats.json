@@ -1,0 +1,302 @@
+{
+  "numeric": {
+    "Age": {
+      "type": "continuous",
+      "mean": 39.0048561035397,
+      "std": 13.791321647732369,
+      "p10": 22.0,
+      "p50": 40.0,
+      "p90": 57.0
+    },
+    "Flight Distance": {
+      "type": "continuous",
+      "mean": 1353.9095528382657,
+      "std": 954.7366822154856,
+      "p10": 508.0,
+      "p50": 954.0,
+      "p90": 2933.0
+    },
+    "Inflight wifi service": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "2": 0.2720268567808274,
+        "3": 0.2687662484252227,
+        "4": 0.1861878372572294,
+        "1": 0.15716277918162552,
+        "5": 0.115856278355095
+      }
+    },
+    "Departure/Arrival time convenient": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "4": 0.26911578705300676,
+        "5": 0.23285189182773444,
+        "3": 0.18060732844473623,
+        "2": 0.17623615113850902,
+        "1": 0.14118884153601352
+      }
+    },
+    "Ease of Online booking": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "3": 0.25631877877782694,
+        "2": 0.2557647084639269,
+        "4": 0.19088179467580488,
+        "1": 0.16244683302185925,
+        "5": 0.134587885060582
+      }
+    },
+    "Gate location": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "3": 0.28945681638324006,
+        "4": 0.24153390555788312,
+        "2": 0.18657814732454586,
+        "1": 0.1499009886808398,
+        "5": 0.13253014205349117
+      }
+    },
+    "Food and drink": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "4": 0.24195632025135716,
+        "5": 0.22252659755298934,
+        "3": 0.2210701287919182,
+        "2": 0.21277863464105382,
+        "1": 0.10166831876268148
+      }
+    },
+    "Online boarding": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "4": 0.3057512215167989,
+        "5": 0.22144257558559488,
+        "3": 0.21683529844112914,
+        "2": 0.17259638622921974,
+        "1": 0.08337451822725733
+      }
+    },
+    "Seat comfort": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "4": 0.3244973051873132,
+        "5": 0.28111556122403347,
+        "3": 0.172013659203237,
+        "2": 0.13190719040063537,
+        "1": 0.09046628398478097
+      }
+    },
+    "Inflight entertainment": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "4": 0.30070927315605084,
+        "5": 0.26077239918265394,
+        "3": 0.17605863133899463,
+        "2": 0.16210756474533086,
+        "1": 0.10035213157696973
+      }
+    },
+    "On-board service": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "4": 0.32309838748624936,
+        "5": 0.24899609168880185,
+        "3": 0.21556885156466601,
+        "2": 0.12458658653287184,
+        "1": 0.08775008272741094
+      }
+    },
+    "Leg room service": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "4": 0.2921869515069455,
+        "5": 0.26161462027266147,
+        "3": 0.18881593558139367,
+        "2": 0.18143702493785238,
+        "1": 0.07594546770114695
+      }
+    },
+    "Baggage handling": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "4": 0.3967568803733375,
+        "5": 0.28962959257327037,
+        "3": 0.18649009840845585,
+        "2": 0.08364718746203377,
+        "1": 0.04347624118290251
+      }
+    },
+    "Checkin service": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "4": 0.30017156954828367,
+        "3": 0.28650504421628137,
+        "5": 0.21137761938753785,
+        "2": 0.10706726993310756,
+        "1": 0.09487849691478951
+      }
+    },
+    "Cleanliness": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "4": 0.27295626288069613,
+        "3": 0.2432000658346691,
+        "5": 0.23349303011220518,
+        "2": 0.1465536981909778,
+        "1": 0.1037969429814518
+      }
+    },
+    "Departure Delay in Minutes": {
+      "type": "discrete",
+      "binning": "zero_vs_nonzero",
+      "value_freq": {
+        "0": 0.9075946743659193,
+        "nonzero": 0.09240532563408066
+      }
+    },
+    "Arrival Delay in Minutes": {
+      "type": "discrete",
+      "binning": "zero_vs_nonzero",
+      "value_freq": {
+        "0": 0.9158005365687127,
+        "nonzero": 0.08419946343128726
+      }
+    },
+    "was_rated_Inflight wifi service": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9813760032016694,
+        "0": 0.018623996798330558
+      }
+    },
+    "was_rated_Departure/Arrival time convenient": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9633844790497903,
+        "0": 0.03661552095020975
+      }
+    },
+    "was_rated_Ease of Online booking": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.97704874684657,
+        "0": 0.022951253153430003
+      }
+    },
+    "was_rated_Gate location": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9978810379697985,
+        "0": 0.0021189620302014623
+      }
+    },
+    "was_rated_Food and drink": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9985313770751892,
+        "0": 0.0014686229248107943
+      }
+    },
+    "was_rated_Online boarding": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9869199654105355,
+        "0": 0.013080034589464506
+      }
+    },
+    "was_rated_Seat comfort": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9988011606051727,
+        "0": 0.0011988393948273027
+      }
+    },
+    "was_rated_Inflight entertainment": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9985242304916134,
+        "0": 0.0014757695083865159
+      }
+    },
+    "was_rated_On-board service": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9988511866902028,
+        "0": 0.0011488133097972515
+      }
+    },
+    "was_rated_Leg room service": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9975701615842546,
+        "0": 0.0024298384157453528
+      }
+    },
+    "was_rated_Checkin service": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9986582289336583,
+        "0": 0.0013417710663417353
+      }
+    },
+    "was_rated_Cleanliness": {
+      "type": "discrete",
+      "binning": "exact",
+      "value_freq": {
+        "1": 0.9986921752056429,
+        "0": 0.0013078247943570575
+      }
+    },
+    "Total Delay in Minutes": {
+      "type": "discrete",
+      "binning": "zero_vs_nonzero",
+      "value_freq": {
+        "0": 0.8667519492306702,
+        "nonzero": 0.13324805076932977
+      }
+    }
+  },
+  "categorical": {
+    "Gender": {
+      "Male": 0.5025030908973965,
+      "Female": 0.4974969091026035
+    },
+    "Customer Type": {
+      "Loyal Customer": 0.8246264123435791,
+      "disloyal Customer": 0.17537358765642086
+    },
+    "Type of Travel": {
+      "Business travel": 0.7115031409234815,
+      "Personal Travel": 0.28849685907651845
+    },
+    "Class": {
+      "Business": 0.4891246864436456,
+      "Eco": 0.4680404782493729,
+      "Eco Plus": 0.0428348353069815
+    }
+  }
+}

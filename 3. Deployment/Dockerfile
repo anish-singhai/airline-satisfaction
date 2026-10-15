@@ -12,6 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 COPY xgboost_pipeline_serving.joblib .
 COPY reference_stats.json .
+COPY eval_metrics.json .
 
 EXPOSE 7860
 

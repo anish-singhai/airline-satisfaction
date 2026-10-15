@@ -315,13 +315,20 @@ def generate_llm_summary(raw, proba, pred, shap_contributions):
         "non-technical reader."
     )
     try:
+        # openai/gpt-oss-20b is a reasoning model -- it spends part of the token
+        # budget on an internal 'reasoning' field before the final answer, so the
+        # budget needs real headroom (a tight ~150 silently truncated to empty
+        # content once in testing). reasoning_effort="low" keeps that overhead
+        # small for a simple summarization task, which matters for a live demo click.
         resp = groq_client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model="openai/gpt-oss-20b",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=150,
-            timeout=5,
+            max_tokens=400,
+            reasoning_effort="low",
+            timeout=10,
         )
-        return resp.choices[0].message.content.strip()
+        content = resp.choices[0].message.content
+        return content.strip() if content else fallback
     except Exception as e:
         log_error("llm_summary", str(e))
         return fallback + " (LLM summary unavailable.)"
